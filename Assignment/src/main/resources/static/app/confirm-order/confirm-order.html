@@ -1,0 +1,76 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">ORDER FORM</a>
+
+            <div class="navbar-content right">
+                <a class="btn btn-default" ng-click="logout();"><span class="glyphicon glyphicon-user"></span></a>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <!--products-->
+        <div class="col-sm-12 order-container smart-scroll">
+
+            <h2 class="text-center no-orders" ng-hide="orders.length">
+                SORRY, YOU HAVE NO ORDERS...!
+            </h2>
+
+            <!--start product box-->
+            <div class="col-sm-2 order-item-confirm"  ng-repeat="order in orders">
+                <div class="panel panel-primary product-box">
+                    <div class="panel-heading panel-title">
+                        {{order.item.name}}
+                    </div>
+                    <div class="panel-body ">
+                        <p>
+                            <img ng-src="{{order.item.image}}" class="img-responsive" alt="product image"/>
+                        </p>
+
+                        <h5>
+                            <b>REQUESTED BY: {{order.customer.name}}</b>
+                        </h5>
+                    </div>
+                    <div class="panel-footer">
+                        <h4 class="text-center">
+                            <span class="badge">{{order.quantity}}</span>
+                            {{order.item.price|currency}}
+                        </h4>
+                        <button class="btn btn-primary btn-block" ng-click="submitOrder(order);">CONFIRM</button>
+                    </div>
+                </div>
+            </div>
+            <!--end product box-->
+        </div>
+
+
+
+    </div>
+</div>
+
+
+<!--modal dialog-->
+<div ng-show="modal.show">
+    <div class="x-modal-backdrop"></div>
+    <div class="x-modal-content">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    {{modal.title}}
+                </div>
+            </div>
+            <div class="panel-body">
+                <h4 class="text-center">{{modal.content}}</h4>
+            </div>
+            <div class="panel-footer">
+                <a class="btn btn-primary btn-lg btn-block" ng-click="modal.hideModal();">OK</a>
+            </div>
+        </div>
+    </div>
+</div>
+

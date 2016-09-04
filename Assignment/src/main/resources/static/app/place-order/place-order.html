@@ -1,0 +1,120 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">ORDER FORM</a>
+
+            <div class="navbar-content right">
+                <a class="btn btn-default" ng-click="logout();"><span class="glyphicon glyphicon-user"></span></a>
+                <a class="btn btn-default only-mobile" ng-click="toggleMobileDisplayType();"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <!--products-->
+        <div class="col-sm-12 col-md-9 product-container smart-scroll" ng-class="mobileDisplayType === 1 ? 'no-display-mobile' : 'display-mobile'">
+
+            <!--start product box-->
+            <div class="col-sm-3"  ng-repeat="item in items">
+                <div class="panel panel-primary product-box">
+                    <div class="panel-heading panel-title">
+                        {{item.name}}
+                    </div>
+                    <div class="panel-body ">
+                        <p>
+                            <img ng-src="{{item.image}}" class="img-responsive" alt="product image"/>
+                        </p>
+
+                        <span class="col-xs-12">
+                            {{item.description}}
+                        </span>
+                    </div>
+                    <div class="panel-footer">
+                        <h4 class="text-center">{{item.price|currency}}</h4>
+                        <button class="btn btn-primary btn-block" ng-click="addItem(item);">ADD</button>
+                    </div>
+                </div>
+            </div>
+            <!--end product box-->
+
+
+        </div>
+
+        <!--order bucket-->
+        <div class="col-sm-12 col-md-3 order-summary-container">
+            <!--<div class="list-group">-->
+            <!--<a class="list-group-item" ng-repeat="orderItem in orderItems">-->
+
+            <div class="panel-group order-items smart-scroll" ng-class="mobileDisplayType === 0 ? 'no-display-mobile' : 'display-mobile'">
+                <h2 class="text-center no-orders" ng-hide="orderItems.length">
+                    SORRY, YOU HAVE NO ORDERS...!
+                </h2>
+
+                <div class="panel panel-primary order-item" ng-repeat="orderItem in orderItems">
+                    <div class="panel-body order-item">
+
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <img ng-src="{{orderItem.item.image}}" class=" img-circle img-responsive" alt="product image">
+                            </div>
+
+                            <div class="col-xs-6">
+                                <h4>{{orderItem.item.name}}</h4>
+                                <h5>
+                                    <span class="badge">{{orderItem.quantity}}</span>
+                                    <b>{{orderItem.item.price|currency}}</b>
+                                </h5>
+                            </div>
+
+                            <div class="col-xs-2">
+                                <button class="btn btn-primary" ng-click="removeItem(orderItem, $index);"><span class="glyphicon glyphicon-trash"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--</a>-->
+            <!--</div>-->
+
+            <!--start order summary-->
+            <div class="panel panel-primary order-summary">
+                <div class="panel-heading">
+                    ORDER SUMMARY
+                </div>
+                <div class="panel-body">
+                    <h2 class="text-center">{{orderSummary() | currency}}</h2>
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-primary btn-block btn-lg" ng-click="submitOrder();" ng-disabled="!orderItems.length">SUBMIT</button>
+                </div>
+            </div>
+            <!--end order summary-->
+        </div>
+    </div>
+</div>
+
+
+<!--modal dialog-->
+<div ng-show="modal.show">
+    <div class="x-modal-backdrop"></div>
+    <div class="x-modal-content">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    {{modal.title}}
+                </div>
+            </div>
+            <div class="panel-body">
+                <h4 class="text-center">{{modal.content}}</h4>
+            </div>
+            <div class="panel-footer">
+                <a class="btn btn-primary btn-lg btn-block" ng-click="modal.hideModal();">OK</a>
+            </div>
+        </div>
+    </div>
+</div>
+

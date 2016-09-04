@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Assignment</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--css-->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
+        <link rel="stylesheet" href="css/style.css">
+
+    </head>
+    <body ng-app="indexModule">
+
+        <div class="view" ng-view>
+        </div>
+
+        <!--js dependencies-->
+        <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
+        
+        <script type="text/javascript" src="js/stomp.min.js"></script>
+        <script type="text/javascript" src="bower_components/sockjs-client/dist/sockjs-0.3.4.min.js"></script>
+
+        <script type="text/javascript" src="app/index.js"></script>
+        <script type="text/javascript" src="app/home/home.js"></script>
+        <script type="text/javascript" src="app/login/login.js"></script>
+        <script type="text/javascript" src="app/place-order/place-order.js"></script>
+        <script type="text/javascript" src="app/confirm-order/confirm-order.js"></script>
+    </body>
+</html>
