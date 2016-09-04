@@ -3,7 +3,7 @@
 
     //constants
     angular.module("indexModule").constant("systemConfig", {
-        apiUrl: "http://hjchanna.herokuapp.com"
+        apiUrl: "https://hjchanna.herokuapp.com"
     });
 
     //route config
