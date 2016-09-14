@@ -25,9 +25,7 @@ public class ItemController {
     @RequestMapping(value = "/item", method = RequestMethod.POST)
     public ItemRespond findAll() {
         ItemRespond itemRespond;
-
         itemRespond = new ItemRespond(itemRepository.findAll());
-
         return itemRespond;
     }
 }

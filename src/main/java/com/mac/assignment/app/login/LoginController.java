@@ -28,9 +28,7 @@ public class LoginController {
         String key = loginRequest.getUsername() + ":" + loginRequest.getPassword();
         String token = Base64.getEncoder().encodeToString(key.getBytes());
         UserImpl user = (UserImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         LoginRespond loginRespond = new LoginRespond(user.getIndexNo(), token, user.getType());
-
         return loginRespond;
     }
 

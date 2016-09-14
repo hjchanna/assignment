@@ -3,7 +3,7 @@
 
     //constants
     angular.module("indexModule").constant("systemConfig", {
-        apiUrl: "https://hjchanna.herokuapp.com"
+        apiUrl: "http://localhost:8080"
     });
 
     //route config
